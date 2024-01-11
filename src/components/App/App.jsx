@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import axios from 'axios'
+import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 
 
 function App() {
@@ -24,43 +25,6 @@ function App() {
         })
     }
 
-    const deleteItem = (event) => {
-        console.log("Inside of delete function", event.target.id);
-        axios.delete(`/api/shopping/${event.target.id}`)
-        .then((reponse) => {
-            getShoppingList()
-        })
-        .catch((error) => {
-            console.log("Error inside of deleteItem", error);
-        })
-    }
-
-    const isBought = (event) => {
-        console.log("Inside of isBought function", event.target.id);
-        axios.put(`/api/shopping/${event.target.id}`)
-        .then((reponse) => {
-            getShoppingList()
-        })
-        .catch((error) => {
-            console.log("Error inside of isBought", error);
-        })
-    }
-    
-    const ChangeToPurchased = ({bought, id}) => {
-        console.log("Inside of changeToPurchased", bought);
-        if(bought == true){
-            return (
-                <p>PURCHASED!!!</p>
-            )
-        }else {
-            return (
-                <div className='itemButton'>
-                    <button id={id} onClick={isBought}>Buy</button>
-                    <button id={id} onClick={deleteItem}>Delete</button>
-                </div>
-            )
-        }
-    }
 
     useEffect(() => {
         getShoppingList();
@@ -75,23 +39,10 @@ function App() {
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>
-                <div className='spreadList'>
-                    {shoppingList.map((element) => (
-                        <div key={element.id} className='item'>
-                        <h3>{element.item}</h3>
-                        <p>{element.quantity} {element.unit}</p>
-                        <ChangeToPurchased id={element.id} bought={element.bought}/>
-                        </div>
-                    ))}
-                </div>
-                {/* <div className='item'>
-                    <h3>Apples</h3>
-                    <p>1 Bushel</p>
-                    <div className='itemButton'>
-                    <button>Buy</button>
-                    <button>Delete</button>
-                    </div>
-                </div> */}
+                <ShoppingList 
+                    getShoppingList = {getShoppingList}
+                    shoppingList = {shoppingList}
+                />
             </main>
         </div>
     );
