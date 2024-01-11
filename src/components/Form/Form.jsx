@@ -1,7 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
+import InputField from "../InputField/InputField"
+import './Form.css'
 
-const Form = ({getShoppingList}) => {
+const Form = ({ getShoppingList }) => {
     const [itemInput, setItemInput] = useState('')
     const [quantityInput, setQuantityInput] = useState('')
     const [unitInput, setUnitInput] = useState('')
@@ -20,47 +22,42 @@ const Form = ({getShoppingList}) => {
             setQuantityInput('')
             setUnitInput('')
             getShoppingList()
-        }).catch((err) =>{
+        }).catch((err) => {
             console.log(err);
         })
 
     }
 
     return (
-        <>
+        <div className="Form">
             <h2>Add Item</h2>
-            <form onSubmit={(event)=>handleSubmit(event)}>
-                <label htmlFor="itemInput">Enter Item</label>
-                <input
-                    required
-                    type="text"
+            <form onSubmit={(event) => handleSubmit(event)}>
+                <InputField
+                    name="Item"
                     id="itemInput"
-                    placeholder="Add Item"
-                    onChange={(event) => {
-                        setItemInput(event.target.value)
-                    }}
-                    value={itemInput} />
-                <label htmlFor="quantityInput">Enter Quantity</label>
-                <input
-                    required
-                    type="number"
-                    id="quantityInput"
-                    placeholder="Add Quantity"
-                    onChange={(event) => setQuantityInput(event.target.value)}
-                    value={quantityInput} />
-                <label htmlFor="unitInput">Enter Unit</label>
-                <input
                     type="text"
+                    required={true}
+                    setFn={setItemInput}
+                    input={itemInput}
+                />
+                <InputField 
+                    name="Quantity"
+                    id="quantityInput"
+                    type="number"
+                    required={true}
+                    setFn={setQuantityInput}
+                    input={quantityInput}
+                />
+                <InputField 
+                    name="Unit"
                     id="unitInput"
-                    placeholder="Enter Unity"
-                    onChange={(event) => setUnitInput(event.target.value)}
-                    value={unitInput} />
-                <p>Item Input: {itemInput}</p>
-                <p>Quantity Input: {quantityInput}</p>
-                <p>Unit Input: {unitInput}</p>
-                <button>Save</button>
+                    type="text"
+                    setFn={setUnitInput}
+                    input={unitInput}
+                />
+                <button>🥦 Add to Shopping List 🍏</button>
             </form>
-        </>
+        </div>
     )
 }
 
