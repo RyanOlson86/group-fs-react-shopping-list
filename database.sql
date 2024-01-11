@@ -1,4 +1,4 @@
--- Create database "shopping_list" --
+-- Create database "fs-react-shopping" --
 
 CREATE TABLE "list" (
 	"id" SERIAL PRIMARY KEY,
