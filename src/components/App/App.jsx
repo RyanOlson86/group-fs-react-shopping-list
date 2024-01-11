@@ -34,7 +34,7 @@ function App() {
             <main>
                 {/* <h2>Add Item</h2>
                 <button>Save</button> */}
-                <Form />
+                <Form getShoppingList={getShoppingList}/>
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>

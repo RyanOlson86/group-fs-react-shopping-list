@@ -1,14 +1,35 @@
 import { useState } from "react"
+import axios from "axios"
 
-const Form = () => {
+const Form = ({getShoppingList}) => {
     const [itemInput, setItemInput] = useState('')
     const [quantityInput, setQuantityInput] = useState('')
-    const [unitInput, setUnityInput] = useState('')
+    const [unitInput, setUnitInput] = useState('')
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log('in handle submit', unitInput);
+
+        axios.post('/api/shopping', {
+            item: itemInput,
+            quantity: quantityInput,
+            unit: unitInput
+        }).then((response) => {
+            console.log('successfully POSTed');
+            setItemInput('')
+            setQuantityInput('')
+            setUnitInput('')
+            getShoppingList()
+        }).catch((err) =>{
+            console.log(err);
+        })
+
+    }
 
     return (
         <>
             <h2>Add Item</h2>
-            <form>
+            <form onSubmit={(event)=>handleSubmit(event)}>
                 <label htmlFor="itemInput">Enter Item</label>
                 <input
                     required
@@ -32,7 +53,7 @@ const Form = () => {
                     type="text"
                     id="unitInput"
                     placeholder="Enter Unity"
-                    onChange={(event) => setUnityInput(event.target.value)}
+                    onChange={(event) => setUnitInput(event.target.value)}
                     value={unitInput} />
                 <p>Item Input: {itemInput}</p>
                 <p>Quantity Input: {quantityInput}</p>
