@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import axios from 'axios'
+import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import Form from '../Form/Form.jsx';
 
 
@@ -13,7 +14,7 @@ function App() {
     const getShoppingList = () => {
         axios({
             method: 'GET',
-            url: ''
+            url: '/api/shopping'
         })
         .then( (response) => {
             console.log('Inside of GET', response);
@@ -24,6 +25,8 @@ function App() {
             console.log('Error on get:', error);
         })
     }
+
+
     useEffect(() => {
         getShoppingList();
     }, [])
@@ -36,14 +39,10 @@ function App() {
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>
-                <div className='item'>
-                    <h3>Apples</h3>
-                    <p>1 Bushel</p>
-                    <div className='itemButton'>
-                    <button>Buy</button>
-                    <button>Delete</button>
-                    </div>
-                </div>
+                <ShoppingList 
+                    getShoppingList = {getShoppingList}
+                    shoppingList = {shoppingList}
+                />
             </main>
         </div>
     )
