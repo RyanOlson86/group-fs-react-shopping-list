@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import axios from 'axios'
+import Form from '../Form/Form.jsx';
 
 
 function App() {
@@ -31,8 +32,9 @@ function App() {
         <div className="App">
             <Header />
             <main>
-                <h2>Add Item</h2>
-                <button>Save</button>
+                {/* <h2>Add Item</h2>
+                <button>Save</button> */}
+                <Form />
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>
@@ -46,7 +48,7 @@ function App() {
                 </div>
             </main>
         </div>
-    );
+    )
 }
 
 export default App;
