@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from '../Header/Header.jsx'
 import './App.css';
 import axios from 'axios'
+import Form from '../Form/Form.jsx';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         })
         .then( (response) => {
             console.log('Inside of GET', response);
-            console.log('Data check', response.data);
+            // console.log('Data check', response.data);
             setShoppingList(response.data)
         })
         .catch( function(error) {
@@ -31,8 +32,7 @@ function App() {
         <div className="App">
             <Header />
             <main>
-                <h2>Add Item</h2>
-                <button>Save</button>
+                <Form getShoppingList={getShoppingList}/>
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>
@@ -46,7 +46,7 @@ function App() {
                 </div>
             </main>
         </div>
-    );
+    )
 }
 
 export default App;
