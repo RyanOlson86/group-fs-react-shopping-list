@@ -23,6 +23,18 @@ function App() {
             console.log('Error on get:', error);
         })
     }
+
+    const deleteItem = (event) => {
+        console.log("Inside of delete function", event.target.id);
+        axios.delete(`/api/shopping/${event.target.id}`)
+        .then((reponse) => {
+            getShoppingList()
+        })
+        .catch((error) => {
+            console.log("Error inside of deleteItem", error);
+        })
+    }
+
     useEffect(() => {
         getShoppingList();
     }, [])
@@ -38,12 +50,12 @@ function App() {
                 <button>Clear</button>
                 <div className='spreadList'>
                     {shoppingList.map((element) => (
-                        <div className='item'>
+                        <div key={element.id} className='item'>
                         <h3>{element.item}</h3>
                         <p>{element.quantity} {element.unit}</p>
                         <div className='itemButton'>
                             <button>Buy</button>
-                            <button>Delete</button>
+                            <button id={element.id} onClick={deleteItem}>Delete</button>
                          </div>
                         </div>
                     ))}
