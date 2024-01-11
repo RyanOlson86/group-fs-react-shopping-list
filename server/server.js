@@ -12,8 +12,8 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use('/api/shopping', shoppingRouter)
-app.use('/api/shopping/reset', resetRouter)
-app.use('/api/shopping/clear', clearRouter)
+app.use('/api/shopping-reset', resetRouter)
+app.use('/api/shopping-clear', clearRouter)
 
 // Create your API routes in a separate file
 // and plug them in here with `app.use()`
