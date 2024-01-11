@@ -5,6 +5,8 @@ import './App.css';
 import axios from 'axios'
 import ShoppingList from '../ShoppingList/ShoppingList.jsx';
 import Form from '../Form/Form.jsx';
+import ResetList from '../ResetList/ResetList.jsx';
+import ClearList from '../ClearList/ClearList.jsx';
 
 
 function App() {
@@ -37,8 +39,8 @@ function App() {
             <main>
                 <Form getShoppingList={getShoppingList}/>
                 <h2>Shopping List</h2>
-                <button>Reset</button>
-                <button>Clear</button>
+                <ResetList getShoppingList={getShoppingList}/>
+                <ClearList getShoppingList = {getShoppingList}/>
                 <ShoppingList 
                     getShoppingList = {getShoppingList}
                     shoppingList = {shoppingList}
