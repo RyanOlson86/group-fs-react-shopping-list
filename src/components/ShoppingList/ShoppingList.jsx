@@ -1,3 +1,4 @@
+import axios from "axios";
 const ShoppingList = ({getShoppingList, shoppingList}) => {
   const deleteItem = (event) => {
     console.log("Inside of delete function", event.target.id);
