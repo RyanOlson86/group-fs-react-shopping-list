@@ -7,7 +7,8 @@ import axios from 'axios'
 
 function App() {
     const [shoppingList, setShoppingList] = useState([])
-
+        
+    //this GET request is pulling from the db
     const getShoppingList = () => {
         axios({
             method: 'GET',
