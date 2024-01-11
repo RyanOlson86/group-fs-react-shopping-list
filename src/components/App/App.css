@@ -11,3 +11,9 @@ main {
   text-align: center;
   padding: 10px;
 }
+.itemButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}

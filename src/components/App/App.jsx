@@ -38,8 +38,10 @@ function App() {
                 <div className='item'>
                     <h3>Apples</h3>
                     <p>1 Bushel</p>
+                    <div className='itemButton'>
                     <button>Buy</button>
                     <button>Delete</button>
+                    </div>
                 </div>
             </main>
         </div>
