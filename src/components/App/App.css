@@ -2,3 +2,12 @@ main {
   width: 90%;
   margin: auto;
 }
+.item {
+  border: 2px solid grey;
+  border-radius: 25px;
+  width: 200px;
+  height: 150px;
+  margin: 30px;
+  text-align: center;
+  padding: 10px;
+}
