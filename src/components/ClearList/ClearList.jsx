@@ -1,6 +1,8 @@
 import axios from "axios";
+import swal from "sweetalert"
+
 const ClearList = ({getShoppingList}) => {
-    const clearItems = (event) => {
+    const clearItems = () => {
         axios
           .delete(`/api/shopping-clear`)
           .then((reponse) => {
@@ -10,9 +12,23 @@ const ClearList = ({getShoppingList}) => {
             console.log("Error inside of clearItems", error);
           });
       };
+
+      const confirmClear = () => {
+        swal({
+          title: 'Are you sure?',
+          text: 'Clearing will delete all items permanently.',
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((value) => {
+          if (value) {
+            clearItems()
+          }
+        })
+      }
     
     return (
-        <button onClick={clearItems}>Clear</button>
+        <button onClick={confirmClear}>Clear</button>
     )
   };
 
