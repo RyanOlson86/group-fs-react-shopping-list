@@ -1,6 +1,6 @@
 import axios from "axios";
 const ResetList = ({getShoppingList}) => {
-    const resetItems = (event) => {
+    const resetItems = () => {
         axios
           .delete(`/api/shopping-reset`)
           .then((reponse) => {
@@ -10,9 +10,22 @@ const ResetList = ({getShoppingList}) => {
             console.log("Error inside of resetItems", error);
           });
       };
-    
+      const confirmReset = () => {
+        swal({
+          title: 'Are you sure?',
+          text: 'Reseting will delete all purchased items permanently.',
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((value) => {
+          if (value) {
+            resetItems()
+          }
+        })
+      }
+
     return (
-        <button onClick={resetItems}>Reset</button>
+        <button onClick={confirmReset}>Reset</button>
     )
   };
 
