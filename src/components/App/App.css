@@ -17,3 +17,6 @@ main {
   justify-content: space-evenly;
   padding-top: 20px;
 }
+.spreadList {
+  display: flex;
+}

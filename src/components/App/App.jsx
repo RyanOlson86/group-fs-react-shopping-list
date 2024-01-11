@@ -12,7 +12,7 @@ function App() {
     const getShoppingList = () => {
         axios({
             method: 'GET',
-            url: ''
+            url: '/api/shopping'
         })
         .then( (response) => {
             console.log('Inside of GET', response);
@@ -36,14 +36,26 @@ function App() {
                 <h2>Shopping List</h2>
                 <button>Reset</button>
                 <button>Clear</button>
-                <div className='item'>
+                <div className='spreadList'>
+                    {shoppingList.map((element) => (
+                        <div className='item'>
+                        <h3>{element.item}</h3>
+                        <p>{element.quantity} {element.unit}</p>
+                        <div className='itemButton'>
+                            <button>Buy</button>
+                            <button>Delete</button>
+                         </div>
+                        </div>
+                    ))}
+                </div>
+                {/* <div className='item'>
                     <h3>Apples</h3>
                     <p>1 Bushel</p>
                     <div className='itemButton'>
                     <button>Buy</button>
                     <button>Delete</button>
                     </div>
-                </div>
+                </div> */}
             </main>
         </div>
     );
