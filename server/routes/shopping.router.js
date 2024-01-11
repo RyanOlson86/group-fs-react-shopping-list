@@ -23,14 +23,20 @@ VALUES
 ($1, $2, $3);
     `
     const queryParams = [newItem.item, newItem.quantity, newItem.unit]
-    pool.query(queryText, queryParams)
-        .then((result) => {
-            // console.log('successful INSERT');
-            res.sendStatus(201)
-        }).catch((err) => {
-            console.log(err);
-            res.sendStatus(500)
-        })
+    if (newItem.item && newItem.quantity) {
+        // console.log('in POST query');
+        pool.query(queryText, queryParams)
+            .then((result) => {
+                // console.log('successful INSERT');
+                res.sendStatus(201)
+            }).catch((err) => {
+                console.log(err);
+                res.sendStatus(500)
+            })
+    } else {
+        res.sendStatus(500)
+    }
+
 
 })
 

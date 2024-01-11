@@ -24,6 +24,7 @@ const Form = ({ getShoppingList }) => {
             getShoppingList()
         }).catch((err) => {
             console.log(err);
+            alert('Item and quantity inputs are required.')
         })
 
     }
@@ -55,6 +56,7 @@ const Form = ({ getShoppingList }) => {
                     setFn={setUnitInput}
                     input={unitInput}
                 />
+                <p style={{fontSize: ".85em"}}><span style={{color: "red"}}>*</span> indicates a required field</p>
                 <button>🥦 Add to Shopping List 🍏</button>
             </form>
         </div>
