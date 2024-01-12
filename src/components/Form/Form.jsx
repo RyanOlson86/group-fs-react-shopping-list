@@ -1,9 +1,19 @@
 import { useState } from "react"
 import axios from "axios"
 import InputField from "../InputField/InputField"
+import { library, findIconDefinition, icon } from "@fortawesome/fontawesome-svg-core"
+// import { fas } from "@fortawesome/free-solid-svg-icons"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
+
+// library.add(fas)
+// const glasses = findIconDefinition({ prefix: 'fas', iconName: 'glasses' })
+// const i = icon(glasses)
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import './Form.css'
 
 const Form = ({ getShoppingList }) => {
+
     const [itemInput, setItemInput] = useState('')
     const [quantityInput, setQuantityInput] = useState('')
     const [unitInput, setUnitInput] = useState('')
@@ -28,10 +38,10 @@ const Form = ({ getShoppingList }) => {
         })
 
     }
-
     return (
         <div className="Form">
             <h2>Add Item</h2>
+            <FontAwesomeIcon icon={faTrash} />
             <form onSubmit={(event) => handleSubmit(event)}>
                 <InputField
                     name="Item"
