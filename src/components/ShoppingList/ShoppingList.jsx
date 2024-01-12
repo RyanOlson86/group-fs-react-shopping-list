@@ -1,4 +1,9 @@
 import axios from "axios";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
+import './ShoppingList.css'
+
 const ShoppingList = ({getShoppingList, shoppingList}) => {
   const deleteItem = (event) => {
     console.log("Inside of delete function", event.target.id);
@@ -30,11 +35,11 @@ const ShoppingList = ({getShoppingList, shoppingList}) => {
     } else {
       return (
         <div className="itemButton">
-          <button id={id} onClick={isBought}>
-            Buy
+          <button className="buy" id={id} onClick={isBought}>
+          <FontAwesomeIcon className="cart" icon={faCartShopping} />
           </button>
-          <button id={id} onClick={deleteItem}>
-            Delete
+          <button className="delete" id={id} onClick={deleteItem}>
+          <FontAwesomeIcon className="trash" icon={faTrash} />
           </button>
         </div>
       );

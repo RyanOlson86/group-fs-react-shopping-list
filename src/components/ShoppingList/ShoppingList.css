@@ -1,0 +1,33 @@
+.buy {
+    background-color: chartreuse;
+    height: 25px;
+    width: 60px;
+    opacity: .5;
+    border-radius: 20px;
+}
+.delete {
+    background-color: rgb(255, 107, 107);
+    height: 25px;
+    width: 60px;
+    opacity: .5;
+
+}
+.buy:hover {
+    opacity: 1;
+}
+.delete:hover {
+    opacity: 1;
+}
+.cart {
+    color: rgb(64, 64, 64);
+}
+.purchased {
+    background-color: lightgray;
+    border: 2px solid grey;
+    border-radius: 25px;
+    width: 200px;
+    height: 150px;
+    margin: 30px;
+    text-align: center;
+    padding: 10px;
+}

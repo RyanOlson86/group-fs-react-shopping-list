@@ -10,6 +10,7 @@ main {
   margin: 30px;
   text-align: center;
   padding: 10px;
+  background-color: rgb(219, 233, 237);
 }
 .itemButton{
   display: flex;
