@@ -11,7 +11,7 @@ import ClearList from '../ClearList/ClearList.jsx';
 
 function App() {
     const [shoppingList, setShoppingList] = useState([])
-        
+
     //this GET request is pulling from the db
     const getShoppingList = () => {
         axios({
